@@ -18,8 +18,22 @@ import {
   SiMariadb,
   SiTailwindcss,
 } from "react-icons/si";
+import { useState } from "react";
+import portofolios from "../data/portofolio";
 
 function App() {
+  const datas = portofolios;
+  const [contact, setContact] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    window.location = `mailto:${contact.email}?&subject=Invitation to Talk More&body=${contact.message}`;
+  };
+
   return (
     <>
       <Navbar />
@@ -40,10 +54,10 @@ function App() {
             </p>
 
             <div className="flex gap-4">
-              <a href="#">
+              <a href="https://github.com/dimasrzkm" target="_blank">
                 <FaGithub className="w-7 h-7" />
               </a>
-              <a href="#">
+              <a href="https://www.instagram.com/dimasrizki1_/" target="_blank">
                 <FaInstagram className="w-7 h-7" />
               </a>
               <a href="#">
@@ -56,13 +70,13 @@ function App() {
           </div>
 
           <img
-            src={"../public/images/undraw_programming.png"}
+            src={"/images/undraw_programming.png"}
             alt="hero_image"
             className="order-1 sm:w-1/2 sm:order-2"
           />
         </section>
         {/* Skills */}
-        <section className="px-5 py-12 sm:px-28">
+        <section className="px-5 py-12 sm:px-28" id="skills">
           <h2 className="text-2xl text-center">My Skills</h2>
           <p className="mt-1 mb-8 text-sm text-center">
             The Skills, tools and technologies I am really good at:
@@ -127,7 +141,7 @@ function App() {
           </div>
         </section>
         {/* Portofolio */}
-        <section className="bg-[#FBFBFB] px-5 py-12 sm:px-28">
+        <section className="bg-[#FBFBFB] px-5 py-12 sm:px-28" id="projects">
           <h4 className="text-xs tracking-[0.2rem] text-gray-700">MY WORK</h4>
           <h2 className="my-2 text-2xl font-medium sm:text-3xl">
             Featured Portofolios
@@ -135,84 +149,73 @@ function App() {
 
           <div className="flex flex-col items-start gap-12 mt-16 sm:flex-row gap-y-6">
             <div className="flex flex-row w-full gap-4 overflow-auto text-gray-800 sm:w-1/4 sm:flex-col">
-              <div className="px-3 rounded py-2 w-full  bg-[#D9D9D9]">All</div>
-              <div className="px-3 rounded py-2 w-full  bg-[#D9D9D9]">App</div>
-              <div className="px-3 rounded py-2 w-full  bg-[#D9D9D9]">
+              <div className="w-full px-3 py-2 bg-gray-100 rounded">All</div>
+              <div className="w-full px-3 py-2 bg-gray-100 rounded">App</div>
+              <div className="w-full px-3 py-2 bg-gray-100 rounded">
                 Component
               </div>
-              <div className="px-3 rounded py-2 w-full  bg-[#D9D9D9]">Page</div>
-              <div className="px-3 rounded py-2 w-full  bg-[#D9D9D9]">
+              <div className="w-full px-3 py-2 bg-gray-100 rounded">Page</div>
+              <div className="w-full px-3 py-2 bg-gray-100 rounded">
                 Responsive
               </div>
             </div>
 
             <div className="grid w-full grid-cols-1 gap-6 sm:w-3/4 sm:grid-cols-2">
-              <div className="w-full bg-white border border-gray-300">
-                <img
-                  src="https://picsum.photos/500/500.webp"
-                  className="object-cover object-center w-full"
-                  alt=""
-                />
-                <div className="p-4">
-                  <a href="#" className="text-xl">
-                    UI Halo Doc
-                  </a>
-                  <div className="flex flex-row gap-2 mt-3 overflow-auto tags">
-                    <p className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800">
-                      Page
-                    </p>
-                    <p className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800">
-                      Responsive
-                    </p>
+              {datas.map((data) => (
+                <div
+                  className="flex flex-col justify-between w-full bg-white border border-gray-300"
+                  key={data.id}
+                >
+                  <img
+                    src={`${data.thumbnail}`}
+                    className="object-cover object-center w-full"
+                    alt=""
+                  />
+                  <div className="flex flex-col justify-between flex-1 p-4">
+                    <a href={data.links} className="text-xl" target="_blank">
+                      {data.title}
+                    </a>
+                    {data.uiDesignerName && (
+                      <p>
+                        Thanks to{" "}
+                        <a
+                          href={data.uiDesignerProfile}
+                          target="_blank"
+                          className="tracking-tight text-indigo-500 underline"
+                        >
+                          {data.uiDesignerName}
+                        </a>{" "}
+                        for the great assets and design.
+                      </p>
+                    )}
+                    {data.challengeLink && (
+                      <a
+                        href={data.challengeLink}
+                        target="_blank"
+                        className="tracking-tight text-indigo-500 underline"
+                      >
+                        Link Challenge
+                      </a>
+                    )}
+                    <div className="flex flex-row gap-2 mt-3 overflow-auto tags">
+                      {data.tags.map((tag, index) => (
+                        <p
+                          className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800"
+                          key={index}
+                        >
+                          {tag}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="w-full bg-white border border-gray-300">
-                <img
-                  src="https://picsum.photos/500/500.webp"
-                  className="object-cover object-center w-full"
-                  alt=""
-                />
-                <div className="p-4">
-                  <a href="#" className="text-xl">
-                    UI Halo Doc
-                  </a>
-                  <div className="flex flex-row gap-2 mt-3 overflow-auto tags">
-                    <p className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800">
-                      Page
-                    </p>
-                    <p className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800">
-                      Responsive
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full bg-white border border-gray-300">
-                <img
-                  src="https://picsum.photos/500/500.webp"
-                  className="object-cover object-center w-full"
-                  alt=""
-                />
-                <div className="p-4">
-                  <a href="#" className="text-xl">
-                    UI Halo Doc
-                  </a>
-                  <div className="flex flex-row gap-2 mt-3 overflow-auto tags">
-                    <p className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800">
-                      Page
-                    </p>
-                    <p className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800">
-                      Responsive
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* Education & Experience Work */}
-        <section className="px-5 py-12 sm:px-28">
+        <section className="px-5 py-12 sm:px-28" id="education">
           <h4 className="text-xs tracking-[0.2rem] text-gray-700">
             LEARNING PATH
           </h4>
@@ -348,34 +351,46 @@ function App() {
         </section>
 
         {/* Contact Me */}
-        <section className="bg-[#FBFBFB] px-5 py-12 sm:px-28">
+        <section className="bg-[#FBFBFB] px-5 py-12 sm:px-28" id="contactme">
           <h2 className="my-2 mb-16 text-2xl font-medium sm:text-3xl">
             Contact Me
           </h2>
 
           <div className="flex flex-col sm:flex-row gap-x-12 gap-y-6">
-            <form action="" className="flex flex-col gap-y-6 sm:w-3/4">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-y-6 sm:w-3/4"
+            >
               <input
                 type="text"
                 name="name"
-                id=""
+                id="name"
                 placeholder="Name"
                 className="w-full px-3 py-1.5 border border-gray-300 rounded focus:outline-none focus:border-gray-400 transition  duration-100"
+                onChange={(e) =>
+                  setContact({ ...contact, name: e.target.value })
+                }
               />
               <input
                 type="email"
                 name="email"
-                id=""
+                id="email"
                 placeholder="Email"
                 className="w-full px-3 py-1.5 border border-gray-300 rounded focus:outline-none focus:border-gray-400 transition  duration-100"
+                onChange={(e) =>
+                  setContact({ ...contact, email: e.target.value })
+                }
               />
               <textarea
                 name="message"
-                id=""
+                id="email"
                 cols="30"
                 rows="10"
                 placeholder="Message"
                 className="w-full px-3 py-1.5 border border-gray-300 rounded focus:outline-none focus:border-gray-400 transition  duration-100"
+                onChange={(e) =>
+                  setContact({ ...contact, message: e.target.value })
+                }
               ></textarea>
               <button
                 type="submit"
