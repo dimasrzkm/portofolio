@@ -1,11 +1,9 @@
-import { NavLink } from "react-router-dom";
-
 const LinksNav = () => {
   return (
     <>
-      <NavLink to="#">Skills</NavLink>
-      <NavLink to="#">Projects</NavLink>
-      <NavLink to="#">Contact Me</NavLink>
+      <a href="#">Skills</a>
+      <a href="#">Projects</a>
+      <a href="#">Contact Me</a>
     </>
   );
 };
