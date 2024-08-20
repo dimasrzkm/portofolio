@@ -39,10 +39,17 @@ const Navbar = () => {
       {open && (
         <Nav classname="flex flex-col items-center w-full mt-6 gap-x-12 gap-y-3">
           <LinksNav />
-          <Button classname="flex items-center justify-center w-full px-4 py-2 text-white bg-indigo-400 rounded-md gap-x-2">
-            Resume
-            <IconDownload />
-          </Button>
+
+          <a
+            href={"/pdf/cv_dimasrizkimahendra.pdf"}
+            download="CV-DimasRizkiMahendra"
+            className="w-full"
+          >
+            <Button classname="flex items-center justify-center w-full px-4 py-2 text-white bg-indigo-400 rounded-md gap-x-2">
+              Resume
+              <IconDownload />
+            </Button>
+          </a>
         </Nav>
       )}
     </nav>

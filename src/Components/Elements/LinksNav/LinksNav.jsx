@@ -1,9 +1,10 @@
 const LinksNav = () => {
   return (
     <>
-      <a href="#">Skills</a>
-      <a href="#">Projects</a>
-      <a href="#">Contact Me</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contactme">Contact Me</a>
     </>
   );
 };
