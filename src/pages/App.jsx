@@ -18,20 +18,41 @@ import {
   SiMariadb,
   SiTailwindcss,
 } from "react-icons/si";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import portofolios from "../data/portofolio";
 
 function App() {
   const datas = portofolios;
+  let [projects, setProjects] = useState([]);
   const [contact, setContact] = useState({
     name: "",
     email: "",
     message: "",
   });
 
+  useEffect(() => {
+    setProjects(portofolios);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     window.location = `mailto:${contact.email}?&subject=Invitation to Talk More&body=${contact.message}`;
+  };
+
+  const handleFilter = (e) => {
+    let tag = e.target.textContent;
+
+    if (tag != "All") {
+      projects = portofolios.filter((project) => {
+        return project.tags.includes(tag);
+      });
+
+      setProjects(projects);
+    }
+
+    if (tag == "All") {
+      setProjects(datas);
+    }
   };
 
   return (
@@ -149,67 +170,96 @@ function App() {
 
           <div className="flex flex-col items-start gap-12 mt-16 sm:flex-row gap-y-6">
             <div className="flex flex-row w-full gap-4 overflow-auto text-gray-800 sm:w-1/4 sm:flex-col">
-              <div className="w-full px-3 py-2 bg-gray-100 rounded">All</div>
-              <div className="w-full px-3 py-2 bg-gray-100 rounded">App</div>
-              <div className="w-full px-3 py-2 bg-gray-100 rounded">
+              <div
+                className="w-full px-3 py-2 bg-gray-100 rounded hover:cursor-pointer"
+                onClick={(e) => handleFilter(e)}
+              >
+                All
+              </div>
+              <div
+                className="w-full px-3 py-2 bg-gray-100 rounded hover:cursor-pointer"
+                onClick={(e) => handleFilter(e)}
+              >
+                App
+              </div>
+              <div
+                className="w-full px-3 py-2 bg-gray-100 rounded hover:cursor-pointer"
+                onClick={(e) => handleFilter(e)}
+              >
                 Component
               </div>
-              <div className="w-full px-3 py-2 bg-gray-100 rounded">Page</div>
-              <div className="w-full px-3 py-2 bg-gray-100 rounded">
+              <div
+                className="w-full px-3 py-2 bg-gray-100 rounded hover:cursor-pointer"
+                onClick={(e) => handleFilter(e)}
+              >
+                Page
+              </div>
+              <div
+                className="w-full px-3 py-2 bg-gray-100 rounded hover:cursor-pointer"
+                onClick={(e) => handleFilter(e)}
+              >
                 Responsive
               </div>
             </div>
 
             <div className="grid w-full grid-cols-1 gap-6 sm:w-3/4 sm:grid-cols-2">
-              {datas.map((data) => (
-                <div
-                  className="flex flex-col justify-between w-full bg-white border border-gray-300"
-                  key={data.id}
-                >
-                  <img
-                    src={`${data.thumbnail}`}
-                    className="object-cover object-center w-full"
-                    alt=""
-                  />
-                  <div className="flex flex-col justify-between flex-1 p-4">
-                    <a href={data.links} className="text-xl" target="_blank">
-                      {data.title}
-                    </a>
-                    {data.uiDesignerName && (
-                      <p>
-                        Thanks to{" "}
+              {projects.length == 0 ? (
+                <p className="text-lg">Portofolio Belum Tersedia</p>
+              ) : (
+                projects.map((project) => (
+                  <div
+                    className="flex flex-col justify-between w-full bg-white border border-gray-300"
+                    key={project.id}
+                  >
+                    <img
+                      src={`${project.thumbnail}`}
+                      className="object-cover object-center w-full"
+                      alt=""
+                    />
+                    <div className="flex flex-col justify-between flex-1 p-4">
+                      <a
+                        href={project.links}
+                        className="text-xl"
+                        target="_blank"
+                      >
+                        {project.title}
+                      </a>
+                      {project.uiDesignerName && (
+                        <p>
+                          Thanks to{" "}
+                          <a
+                            href={project.uiDesignerProfile}
+                            target="_blank"
+                            className="tracking-tight text-indigo-500 underline"
+                          >
+                            {project.uiDesignerName}
+                          </a>{" "}
+                          for the great assets and design.
+                        </p>
+                      )}
+                      {project.challengeLink && (
                         <a
-                          href={data.uiDesignerProfile}
+                          href={project.challengeLink}
                           target="_blank"
                           className="tracking-tight text-indigo-500 underline"
                         >
-                          {data.uiDesignerName}
-                        </a>{" "}
-                        for the great assets and design.
-                      </p>
-                    )}
-                    {data.challengeLink && (
-                      <a
-                        href={data.challengeLink}
-                        target="_blank"
-                        className="tracking-tight text-indigo-500 underline"
-                      >
-                        Link Challenge
-                      </a>
-                    )}
-                    <div className="flex flex-row gap-2 mt-3 overflow-auto tags">
-                      {data.tags.map((tag, index) => (
-                        <p
-                          className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800"
-                          key={index}
-                        >
-                          {tag}
-                        </p>
-                      ))}
+                          Link Challenge
+                        </a>
+                      )}
+                      <div className="flex flex-row gap-2 mt-3 overflow-auto tags">
+                        {project.tags.map((tag, index) => (
+                          <p
+                            className="bg-[#D9D9D9] max-w-fit px-2 py-1.5 rounded-full text-xs text-gray-800"
+                            key={index}
+                          >
+                            {tag}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </div>
         </section>

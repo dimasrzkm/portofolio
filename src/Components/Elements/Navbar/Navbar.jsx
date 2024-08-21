@@ -27,10 +27,15 @@ const Navbar = () => {
         <LinksNav />
       </Nav>
 
-      <Button classname="hidden px-4 py-2 text-white bg-indigo-400 rounded-md sm:flex sm:justify-center sm:items-center sm:gap-x-2">
-        Resume
-        <IconDownload />
-      </Button>
+      <a
+        href={"/pdf/cv_dimasrizkimahendra.pdf"}
+        download="CV-DimasRizkiMahendra"
+      >
+        <Button classname="hidden px-4 py-2 text-white bg-indigo-500 rounded-md sm:flex sm:justify-center sm:items-center sm:gap-x-2">
+          Resume
+          <IconDownload />
+        </Button>
+      </a>
 
       <Button onClick={toggleModal} classname="sm:hidden">
         <IconHamburger />
@@ -45,7 +50,7 @@ const Navbar = () => {
             download="CV-DimasRizkiMahendra"
             className="w-full"
           >
-            <Button classname="flex items-center justify-center w-full px-4 py-2 text-white bg-indigo-400 rounded-md gap-x-2">
+            <Button classname="flex items-center justify-center w-full px-4 py-2 text-white bg-indigo-500 rounded-md gap-x-2">
               Resume
               <IconDownload />
             </Button>
