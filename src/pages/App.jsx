@@ -90,9 +90,10 @@ function App() {
           </div>
 
           <img
-            src={"/images/undraw_programming.png"}
+            src={"/images/undraw_programming.webp"}
             alt="hero_image"
             className="order-1 sm:w-1/2 sm:order-2"
+            loading="lazy"
           />
         </section>
         {/* Skills */}
@@ -224,6 +225,7 @@ function App() {
                       src={`${project.thumbnail}`}
                       className="object-cover object-center w-full"
                       alt=""
+                      loading="lazy"
                     />
                     <div className="flex flex-col justify-between flex-1 p-4 dark:bg-slate-800 dark:text-slate-100 ">
                       <a

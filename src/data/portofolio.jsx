@@ -7,7 +7,7 @@ const portofolios = [
     links: "https://ui-epictetus.netlify.app/",
     uiDesignerProfile: "https://www.figma.com/@mhd",
     uiDesignerName: "Nauval",
-    thumbnail: "images/epictetus_blog_ui_design.png",
+    thumbnail: "images/epictetus_blog_ui_design.webp",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const portofolios = [
     links: "https://ui-hoster-support.netlify.app/",
     uiDesignerProfile: "https://www.figma.com/@mhd",
     uiDesignerName: "Nauval",
-    thumbnail: "images/hoster_support.png",
+    thumbnail: "images/hoster_support.webp",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const portofolios = [
     links: "https://ui-jobless-hero.netlify.app/",
     uiDesignerProfile: "https://www.figma.com/@mhd",
     uiDesignerName: "Nauval",
-    thumbnail: "images/jobless_hero.png",
+    thumbnail: "images/jobless_hero.webp",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const portofolios = [
     links: "https://ui-faceless.netlify.app/",
     uiDesignerProfile: "https://www.figma.com/@mhd",
     uiDesignerName: "Nauval",
-    thumbnail: "images/faceless_login_page.png",
+    thumbnail: "images/faceless_login_page.webp",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const portofolios = [
     links: "https://ui-enlighten.netlify.app/",
     uiDesignerProfile: "https://www.figma.com/@mhd",
     uiDesignerName: "Nauval",
-    thumbnail: "images/enlighten_a_coming_soon_page.png",
+    thumbnail: "images/enlighten_a_coming_soon_page.webp",
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ const portofolios = [
     links: "https://ui-holadok.netlify.app/",
     uiDesignerProfile: "https://www.figma.com/@mhd",
     uiDesignerName: "Nauval",
-    thumbnail: "images/holadok_hero.png",
+    thumbnail: "images/holadok_hero.webp",
   },
   {
     id: 7,
@@ -67,7 +67,7 @@ const portofolios = [
     links: "https://ui-twitter-embed-challenge.netlify.app/",
     uiDesignerProfile: "https://www.figma.com/@mhd",
     uiDesignerName: "Nauval",
-    thumbnail: "images/twitter_embed.png",
+    thumbnail: "images/twitter_embed.webp",
   }
 ];
 
